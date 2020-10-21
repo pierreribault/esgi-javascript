@@ -9,12 +9,12 @@ function camelCase(string) {
 function prop_access(object, path) {
     let result = object
 
-    if(typeof(object) === 'null') {
-        return "test not exist"
+    if(typeof(object) === 'null' || typeof(object) === 'undefined') {
+        return path + " not exist"
     }
 
     if(typeof(path) === 'null' || path == "") {
-        return ""
+        return object
     }
 
     path.split('.').forEach(element => {

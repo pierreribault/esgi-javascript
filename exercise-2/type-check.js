@@ -18,6 +18,8 @@ function type_check_v2(arg, object) {
     return true
 }
 
+function type_check()
+
 console.log(type_check_v1(1, "number"))
 console.log(type_check_v2(1, {type: "string"}))
 console.log(type_check_v2(1, {type: "number", value: 1}))
