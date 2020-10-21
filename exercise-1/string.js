@@ -1,5 +1,5 @@
 function camelCase(string) {
-    return string.split(' ').map(word => toUpperCase(word)).join('');
+    return string.split(' ').map(word => toUpperCase(word)).join('')
 }
 
 function prop_access(object, path) {
@@ -14,11 +14,11 @@ function prop_access(object, path) {
         }
 
         result = result[element]
-    });
+    })
 
-    return result;
+    return result
 }
 
 function toUpperCase(string) {
-    return string.substring(0, 1).toUpperCase() + string.substring(1);
-};
+    return string.substring(0, 1).toUpperCase() + string.substring(1)
+}
