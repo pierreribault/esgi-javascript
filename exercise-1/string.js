@@ -1,5 +1,5 @@
 function camelCase(string) {
-    return string.split(' ').map(word => toUpperCase(word)).join('')
+    return string.replace('_', ' ').split(' ').map(word => toUpperCase(word)).join('')
 }
 
 function prop_access(object, path) {
