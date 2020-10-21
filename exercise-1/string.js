@@ -9,7 +9,7 @@ function camelCase(string) {
 function prop_access(object, path) {
     let result = object
 
-    if(typeof(object) === 'null' || typeof(object) === 'undefined') {
+    if(object === null || typeof(object) === 'undefined') {
         return path + " not exist"
     }
 
