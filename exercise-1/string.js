@@ -5,12 +5,14 @@ function camelCase(string) {
 function prop_access(object, path) {
     let result = object
     path.split('.').forEach(element => {
-        if(result[element]) {
-            return `${path} not exist`
+        if(result[element] == undefined) {
+            result = `${path} not found`;
+            return
         }
 
         if(result[element] === null || result[element] === "") {
-            return object
+            result = object
+            return
         }
 
         result = result[element]
