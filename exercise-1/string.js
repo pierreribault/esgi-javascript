@@ -1,5 +1,5 @@
 function camelCase(string) {
-    if(typeof(string) === 'null' || typeof(string) === 'object') {
+    if(typeof(string) !== 'string') {
         return ""
     }
 
