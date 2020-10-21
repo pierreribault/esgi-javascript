@@ -5,13 +5,13 @@ function camelCase(string) {
 function prop_access(object, path) {
     let result = object
 
-    if(path == null || path == "") {
+    if(path == null || path == "" || object == null) {
         return object
     }
 
     path.split('.').forEach(element => {
         if(result[element] == undefined) {
-            result = `${path} not exist`;
+            result = path + " not exist"
             return
         }
 
