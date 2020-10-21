@@ -1,4 +1,8 @@
 function camelCase(string) {
+    if(string == null || string === 'object') {
+        return string
+    }
+    
     return string.replace('_', ' ').split(' ').map(word => toUpperCase(word)).join('')
 }
 
