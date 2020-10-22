@@ -7,7 +7,7 @@ function type_check_v1(arg1, arg2) {
         return Array.isArray(arg1)
     }
 
-    return typeof(arg1) === arg2
+    return typeof(arg1) === typeof(arg2)
 }
 
 function type_check_v2(arg, object) {
@@ -31,8 +31,12 @@ function type_check_v2(arg, object) {
 }
 
 function type_check(object, conf) {
-    if(!type_check_v1(object, "object") || !type_check_v1(conf, "object")) {
+    if(!type_check_v1(conf, "object")) {
         return false
+    }
+
+    if(!type_check_v1(object, "object")) {
+        return type_check_v2(object, conf)
     }
 
     if(!conf.hasOwnProperty('type')) {
@@ -45,7 +49,7 @@ function type_check(object, conf) {
 
     if(conf.hasOwnProperty('properties')) {
         for(let propertyName in conf.properties) {
-            if(object.hasOwnProperty(propertyName) && !type_check_v2(object[propertyName], conf.properties[propertyName])) {
+            if(!object.hasOwnProperty(propertyName) || !type_check_v2(object[propertyName], conf.properties[propertyName])) {
                 return false
             }
         }
@@ -53,3 +57,16 @@ function type_check(object, conf) {
 
     return true
 }
+
+console.log(type_check_v1(undefined, undefined))
+//console.log(type_check_v1(null, "null"))
+//console.log(type_check_v1([2,3], "array"))
+//console.log(type_check_v2(1, {type: "string"}))
+//console.log(type_check_v2(1, {type: "number", value: 1}))
+//console.log(type_check_v2(1, {type: "string", value: 1}))
+//console.log(type_check_v2(1, {type: "number", value: 1, enum: 4}))
+//console.log(type_check_v2(1, {type: "number", value: 1, enum: [1,2]}))
+//console.log(type_check_v2(1, {type: "number", value: 1, enum: [3,4]}))
+console.log(type_check(1, {type: "number"}))
+console.log(type_check({props2: 5}, {type: "object", properties: {props1: {type: "number"}}}))
+console.log(type_check({props1: 3}, {type: "object", properties: {props1: {type: "number"}}}))
