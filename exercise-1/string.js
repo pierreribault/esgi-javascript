@@ -13,8 +13,8 @@ function prop_access(object, path) {
         return path + " not exist"
     }
 
-    if(typeof(path) === 'null' || path == "") {
-        return object
+    if(path === null || path == "") {
+        return ""
     }
 
     path.split('.').forEach(element => {
@@ -31,3 +31,16 @@ function prop_access(object, path) {
 function toUpperCase(string) {
     return string.substring(0, 1).toUpperCase() + string.substring(1).toLowerCase()
 }
+
+
+const prairie = {
+    'animal' : {
+        'region': "france",
+        'couleur': ["bleu", "blanc", "rouge"],
+        'type' : {
+            'name': 'chien'
+        }
+    }
+}
+
+console.log(prop_access(null, "test"))

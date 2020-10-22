@@ -53,15 +53,3 @@ function type_check(object, conf) {
 
     return true
 }
-
-console.log(type_check_v1(1, "number"))
-console.log(type_check_v1(null, "null"))
-console.log(type_check_v1([2,3], "array"))
-console.log(type_check_v2(1, {type: "string"}))
-console.log(type_check_v2(1, {type: "number", value: 1}))
-console.log(type_check_v2(1, {type: "string", value: 1}))
-console.log(type_check_v2(1, {type: "number", value: 1, enum: 4}))
-console.log(type_check_v2(1, {type: "number", value: 1, enum: [1,2]}))
-console.log(type_check_v2(1, {type: "number", value: 1, enum: [3,4]}))
-
-console.log(type_check({props1: 3}, {type: "object", properties: {props1: {type: "number"}}}))
